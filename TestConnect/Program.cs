@@ -39,9 +39,9 @@ namespace TestConnect
 
         static Socket connectTo(string address, int port)
         {
-            IPHostEntry ipHostInfo = Dns.GetHostEntry("mc.spinalcraft.com");
+            IPHostEntry ipHostInfo = Dns.GetHostEntry(address);
             IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 8765);
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
             Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             sock.Connect(remoteEP);
